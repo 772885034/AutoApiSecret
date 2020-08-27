@@ -6,10 +6,12 @@ import json,sys,time
 #user:	User.Read.All、User.ReadWrite.All、Directory.Read.All、Directory.ReadWrite.All
 #mail:  Mail.Read、Mail.ReadWrite、MailboxSettings.Read、MailboxSettings.ReadWrite
 #注册后一定要再点代表xxx授予管理员同意,否则outlook api无法调用
-
-
-
-
+###################################################################
+#把下方单引号内的内容改为你的应用id                                         #
+id=r'a872f31d-4ba6-41a7-8666-acbfe0e169a1'                         
+#把下方单引号内的内容改为你的应用机密                                       #
+secret=r'eaxnt4rf65tcJ-f3bDLk._m82ws1jg-n6u'                                           
+###################################################################
 
 
 path=sys.path[0]+r'/1.txt'
@@ -61,7 +63,7 @@ def main():
         if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',headers=headers).status_code == 200:
             num1+=1
             print('6调用成功'+str(num1)+'次')    
-        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta',headers=headers).status_code == 200:
+        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',headers=headers).status_code == 200:
             num1+=1
             print('7调用成功'+str(num1)+'次')
         if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root/children',headers=headers).status_code == 200:
@@ -76,7 +78,7 @@ def main():
         if req.get(r'https://graph.microsoft.com/v1.0/me/outlook/masterCategories',headers=headers).status_code == 200:
             num1+=1
             print('10调用成功'+str(num1)+'次')
-            print('此次运行结束时间为 :', localtime)
+            print('此次运行结束时间为 : '+localtime)
     except:
         print("pass")
         pass
